@@ -1,13 +1,13 @@
 {
     "builds": [{
-        "src": "setup/wsgi.py",
+        "src": "source/wsgi.py",
         "use": "@ardnt/vercel-python-wsgi",
         "config": { "maxLambdaSize": "15mb" }
     }],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "setup/wsgi.py"
+            "dest": "source/wsgi.py"
         }
     ]
 }
