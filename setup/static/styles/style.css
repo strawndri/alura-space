@@ -101,6 +101,12 @@ table {
     width: 100%;
 }
 
+.cabecalho__busca footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .busca__input {
     align-items: center;
     background-color: transparent;
@@ -112,6 +118,7 @@ table {
 }
 
 .busca__icone {
+    align-self: center;
     cursor: pointer;
     width: 2rem;
     height: 2rem;
@@ -340,6 +347,7 @@ table {
     display: flex;
     justify-content: space-between;
     color: #FFFFFF;
+    position: fixed;
 }
 
 .rodape__icones {

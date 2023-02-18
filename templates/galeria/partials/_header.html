@@ -5,7 +5,7 @@
         <div class="busca__fundo">
             <form action="{% url 'buscar' %}">
                 <input class="busca__input" name="buscar" type="text" placeholder="O que você procura?">
-                <button type="submit">
+                <button type="submit" class="busca__botao" style="background-color: transparent; border:none">
                     <img class="busca__icone" src="{% static '/assets/ícones/1x/search.png' %}" alt="ícone de search">
                 </button>
             </form>
