@@ -1,13 +1,13 @@
 {
     "builds": [{
-        "src": "alura-space/wsgi.py",
+        "src": "setup/wsgi.py",
         "use": "@ardnt/vercel-python-wsgi",
         "config": { "maxLambdaSize": "15mb" }
     }],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "alura-space/wsgi.py"
+            "dest": "setup/wsgi.py"
         }
     ]
 }
