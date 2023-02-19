@@ -4,7 +4,7 @@ from usuarios.forms import LoginForms, CadastroForms
 
 from django.contrib.auth.models import User
 
-from django.contrib import auth
+from django.contrib import auth, messages
 
 def login(request):
     form = LoginForms()
@@ -24,8 +24,10 @@ def login(request):
 
             if usuario is not None:
                 auth.login(request, usuario)
+                messages.success(request, f'Olá, {nome}! O login foi realizado com sucesso.')
                 return redirect('index')
             else:
+                messages.error(request, f'Oops! Usuário ou senha incorretos, tente novamente.')
                 return redirect('login')
 
 
@@ -41,6 +43,7 @@ def cadastro(request):
         if form.is_valid():
             # priorizar as alternativas para evitar uma quantidade desnecessária de if's
             if form['senha_1'].value() != form['senha_2'].value(): 
+                messages.error(request, 'Oops! Parece que as senhas estão diferentes. Tente novamente.')
                 return redirect('cadastro')
 
             nome = form['nome_cadastro'].value()
@@ -48,6 +51,7 @@ def cadastro(request):
             senha = form['senha_1'].value()
 
             if User.objects.filter(username='nome').exists():
+                messages.error(request, 'Usuário já existente.')
                 return redirect('cadastro')
             
             usuario = User.objects.create_user(
@@ -57,6 +61,7 @@ def cadastro(request):
             )
 
             usuario.save()
+            messages.success(request, f'Boas vindas, {nome}! O cadastro foi realizado com sucesso.')
             return redirect('login')
 
     return render(request, 'usuarios/cadastro.html', {'form': form})
