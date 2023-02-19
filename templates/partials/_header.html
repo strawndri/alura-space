@@ -6,6 +6,7 @@
         <p id="messages">{{message}}</p>
     </div>
     {% endfor %}
+    {% if user.is_authenticated %}
     <div class="cabecalho__busca">
         <div class="busca__fundo">
             <form action="{% url 'buscar' %}">
@@ -16,4 +17,5 @@
             </form>
         </div>
     </div>
+    {% endif %}
 </header>
