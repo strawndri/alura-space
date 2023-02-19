@@ -40,10 +40,7 @@ def cadastro(request):
         form = CadastroForms(request.POST)
 
         if form.is_valid():
-            # priorizar as alternativas para evitar uma quantidade desnecessária de if's
-            if form['senha_1'].value() != form['senha_2'].value(): 
-                messages.error(request, 'Oops! Parece que as senhas estão diferentes. Tente novamente.')
-                return redirect('cadastro')
+           
 
             nome = form['nome_cadastro'].value()
             email = form['email'].value()
