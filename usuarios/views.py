@@ -33,7 +33,6 @@ def login(request):
 
     return render(request, 'usuarios/login.html', {'form': form})
 
-
 def cadastro(request):
     form = CadastroForms()
 
@@ -65,3 +64,8 @@ def cadastro(request):
             return redirect('login')
 
     return render(request, 'usuarios/cadastro.html', {'form': form})
+
+def logout(request):
+    messages.success(request, f'Até mais! O logout foi efetuado com sucesso.')
+    auth.logout(request)
+    return redirect('login')
