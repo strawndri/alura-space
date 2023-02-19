@@ -3,19 +3,18 @@
 {% block content %}
 <section class="galeria" style="margin-left: 5em">
     <form action="{% url 'cadastro' %}" method="POST">
+        {% csrf_token %} <!--proteção!-->
         <div class="row">
-            {% csrf_token %} <!--proteção!-->
-            <div class="row">
-                {% for field in form.visible_fields %}
-                <div class="col-12 col-lg-12" style="margin-bottom: 10px;">
-                    <label for="{{ field.id_for_label }}" style="color:#D9D9D9; margin-bottom: 5px;">{{field.label}}</label>
-                    {{ field }}
-                </div>
-                {% endfor %}
+            {% for field in form.visible_fields %}
+            <div class="row__field" id="{{field.id_for_label}}"  style="margin-bottom: 10px;">
+                <label style="color:#D9D9D9; margin-bottom: 5px;">{{field.label}}
+                {{ field }}
+                </label> 
             </div>
-            <div>
-                <button class="btn btn-success col-12" type="submit">Cadastrar</button>
-            </div>
+            {% endfor %}
+        </div>
+        <div>
+            <button class="btn btn-success col-12" type="submit">Cadastrar</button>
         </div>
     </form>
 </section>

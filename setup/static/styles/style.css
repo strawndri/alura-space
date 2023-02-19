@@ -349,7 +349,6 @@ table {
     display: flex;
     justify-content: space-between;
     color: #FFFFFF;
-    position: fixed;
 }
 
 .rodape__icones {
@@ -392,3 +391,4 @@ table {
     border: 2px solid #7B78E5;
     cursor: pointer;
 }
+

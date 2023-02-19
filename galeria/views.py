@@ -1,8 +1,12 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from galeria.models import Fotografia
 
 def index(request):
+
+    if not request.user.is_authenticated:
+        return redirect('login')
+    
     fotografias = Fotografia.objects.order_by('-data_fotografia').filter(publicada=True) # o hífen serve para ordenar a lista de fotografias da mais nova para a mais antiga
     return render(request, 'galeria/index.html', {"cards": fotografias})
 
@@ -11,6 +15,9 @@ def imagem(request, foto_id):
     return render(request, 'galeria/imagem.html', {'fotografia': fotografia})
 
 def buscar(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    
     fotografias = Fotografia.objects.order_by('data_fotografia').filter(publicada=True)
 
     if 'buscar' in request.GET:
