@@ -78,7 +78,7 @@ table {
     align-items: center;
     display: flex;
     justify-content: space-between;
-    margin: 1.5rem 0 4rem 0;
+    margin: 1.5rem 0 1rem 0;
 }
 
 .cabecalho__busca {
@@ -393,13 +393,22 @@ table {
 }
 
 .alert {
+    width: 400px;
     position: relative;
     padding: 0.75rem 1.25rem;
-    margin-bottom: 1rem;
+    margin-bottom: 4rem;
     border: 1px solid transparent;
     border-radius: 0.25rem;
-    color: #0c5460;
-    background-color: #d1ecf1;
-    border-color: #bee5eb;
+    color: #333;
+}
+
+.alert-success {
+    background-color: #55ff74;
+    border-color: rgb(34, 183, 106);
+}
+
+.alert-danger {
+    background-color: #ff5555;
+    border-color: #d93838;
 }
 
